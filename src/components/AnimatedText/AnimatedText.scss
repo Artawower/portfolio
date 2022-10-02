@@ -1,0 +1,68 @@
+@keyframes bounce-word {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  20% {
+    transform: scaleY(0.7) scaleX(1.1);
+  }
+  55% {
+    transform: scaleY(0.65) scaleX(1.15);
+  }
+  70% {
+    transform: scaleY(1) scaleX(1);
+  }
+
+  78% {
+    transform: scaleY(0.75) scaleX(1.07);
+  }
+
+  86% {
+    transform: scaleY(1) scaleX(1);
+  }
+
+  94% {
+    transform: scaleY(0.85) scaleX(1.03);
+  }
+
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes drop-word {
+  0% {
+    bottom: calc(100vh - 80px);
+    opacity: 1;
+  }
+  100% {
+    bottom: -48px;
+    opacity: 1;
+  }
+}
+
+.al,
+.dropped-letter {
+  color: $sky;
+  font-size: 48px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.al {
+  &.animate {
+    animation: 1s linear normal bounce-word;
+  }
+
+  &.i {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.dropped-letter {
+  position: absolute;
+  bottom: 2px;
+  animation: 3s linear normal drop-word;
+  padding-top: 32px;
+  opacity: 0;
+}

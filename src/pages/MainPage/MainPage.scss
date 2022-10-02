@@ -1,0 +1,28 @@
+.main-page {
+  @include flexify();
+  height: 100%;
+  padding: $big-padding;
+  box-sizing: border-box;
+
+  .left-bar,
+  .main-content {
+    // @include flexify(column, flex-start);
+    height: 100%;
+    width: 100%;
+  }
+  .left-bar {
+    flex: 1;
+  }
+  .main-content {
+    flex: auto;
+    padding-left: $big-padding;
+  }
+
+  .about-me {
+    color: $smog;
+    font-size: 1.1rem;
+    padding: 16px 0;
+    line-height: 1.6rem;
+    text-align: justify;
+  }
+}
