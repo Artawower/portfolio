@@ -1,3 +1,6 @@
+$portrait-size: 272px;
+$portrait-ratio: 1.32917;
+
 .blackout {
   width: 100%;
   height: 100%;
@@ -7,16 +10,25 @@
 }
 
 .wrapper {
-  background: $dark;
   position: relative;
   display: grid;
   place-items: center;
-  width: 240px;
-  height: 240px;
+  width: $portrait-size;
+  min-height: $portrait-size;
+  height: $portrait-size;
   overflow: hidden;
+  aspect-ratio: 1/1;
 
-  border: $big-border solid $dark;
-  border-radius: $big-border-radius;
+  @include devices(tablet) {
+    width: 400px;
+    height: 400px;
+  }
+
+  @include devices(extra-small) {
+    width: 100vw;
+    margin: 0 auto;
+    height: unset;
+  }
 
   &:hover {
     .blackout {
@@ -42,12 +54,17 @@
   position: relative;
   top: -50px;
   background: url('/ava.jpeg') no-repeat;
-  background-size: 240px 319px;
+  background-size: $portrait-size $portrait-ratio * $portrait-size;
   text-align: justify;
 
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0.1);
+
+  @include devices(tablet) {
+    top: -110px;
+    background-size: 400px 1.32917 * 400px;
+  }
 }
 
 @keyframes visible-portrait {
@@ -58,7 +75,7 @@
     -webkit-background-clip: text;
   }
   50% {
-    font-size: 6px;
-    line-height: 4px;
+    font-size: 8px;
+    line-height: 6px;
   }
 }

@@ -11,3 +11,35 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+.f-coral {
+  color: $coral;
+}
+
+.f-grass {
+  color: $grass;
+}
+
+.f-sky {
+  color: $sky;
+}
+
+h2.section {
+  margin: $md-padding 0;
+  &.f-coral {
+    border-bottom: $border-width solid $coral;
+  }
+  &.f-grass {
+    border-bottom: $border-width solid $grass;
+  }
+  &.f-sky {
+    border-bottom: $border-width solid $sky;
+  }
+}
+
+.card {
+  background: $dark;
+  border: $big-border solid $dark;
+  border-radius: $big-border-radius;
+  box-sizing: border-box;
+}

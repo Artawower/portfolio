@@ -13,3 +13,49 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
+
+@mixin mask($path, $background, $size: cover) {
+  mask-image: url($path);
+  -webkit-mask-image: url($path);
+  mask-size: $size;
+  -webkit-mask-size: $size;
+  background: $background;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin without-overflow() {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin devices($breakpoint) {
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: 679px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == extra-small {
+    @media only screen and (max-width: 400px) {
+      @content;
+    }
+  }
+}

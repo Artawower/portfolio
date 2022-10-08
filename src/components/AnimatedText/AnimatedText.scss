@@ -46,6 +46,10 @@
   font-size: 48px;
   cursor: pointer;
   display: inline-block;
+
+  @include devices(tablet) {
+    font-size: 32px;
+  }
 }
 
 .al {

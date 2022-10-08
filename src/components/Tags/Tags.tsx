@@ -7,8 +7,8 @@ interface Props {
 }
 
 const Tags: FunctionComponent<Props> = (props: Props) => {
-  return <div>
-    {props.tags.map((tag) => <span className="tag">{tag}</span>)}
+  return <div className="tag-container">
+    {props.tags.map((tag) => <div className="tag">{tag}</div>)}
   </div>
 }
 

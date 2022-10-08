@@ -1,0 +1,86 @@
+.social-media {
+  @include flexify();
+  gap: $md-padding * 0.5;
+  margin: $md-padding 0;
+  width: 100%;
+
+  @include devices(tablet) {
+    gap: $sm-padding;
+    margin: $md-padding 0;
+  }
+
+  @include devices(mobile) {
+    margin: $md-padding 0;
+  }
+
+  @include devices(extra-small) {
+    margin: $md-padding 0;
+    width: 100vw;
+  }
+
+  [class*='-link'] {
+    display: block;
+    width: $lg-icon-size;
+    height: $lg-icon-size;
+    background-size: cover;
+    position: relative;
+
+    .fake-shadow {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: transparent;
+    }
+
+    @include devices(tablet) {
+      width: $lg-icon-size * 1.5;
+      height: $lg-icon-size * 1.5;
+
+      .fake-shadow {
+        width: 36px;
+        height: 36px;
+        top: 18px;
+        left: 18px;
+      }
+    }
+
+    @include devices(extra-small) {
+      width: $md-icon-size;
+      height: $md-icon-size;
+
+      .fake-shadow {
+        width: 24px;
+        height: 24px;
+        top: 12px;
+        left: 12px;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      .fake-shadow {
+        @include box-shadow(0px 0px 22px 3px rgba(52, 191, 208, 1));
+      }
+    }
+  }
+
+  .github-link {
+    background-image: url('/public/github-cartoon.svg');
+  }
+
+  .linkedin-link {
+    background-image: url('/public/linkedin-cartoon.svg');
+  }
+  .email-link {
+    background-image: url('/public/mail-cartoon.svg');
+  }
+  .download-link {
+    background-image: url('/public/word-cartoon.svg');
+  }
+
+  .telegram-link {
+    background-image: url('/public/telegram-cartoon.svg');
+  }
+}

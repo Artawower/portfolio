@@ -1,0 +1,58 @@
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.carriage {
+  width: 4px;
+  height: 16px;
+  display: inline-block;
+  background: $grass;
+
+  animation: 1s blink infinite;
+  margin-left: 3px;
+  position: relative;
+  top: 2px;
+}
+
+.stdout {
+  @include without-overflow;
+
+  color: $smog;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  text-align: justify;
+  width: 100%;
+  height: 100%;
+}
+
+.sequence {
+  width: auto;
+  margin-top: $md-margin;
+  color: $smog;
+  font-size: 1.1rem;
+  padding: 16px 0;
+  line-height: 1.6rem;
+}
+
+.new-line {
+  color: $grass;
+}
+
+.username {
+  color: $sky;
+}
+
+.path {
+  color: $lavender;
+}
