@@ -9,9 +9,18 @@ interface Props {
 
 const typeTimeout = 30;
 const typeTimeoutAfterCarriage = 1500;
+const alreadyRenderedInfoKey = 'rendered';
 
 const StdoutText: FunctionComponent<Props> = ({ text }) => {
-  const [charBlocks, setCharBlocks] = useState<string[]>(['']);
+  const rawRenderedBlocks = sessionStorage.getItem(alreadyRenderedInfoKey);
+  const alreadyRenderedBlocks = rawRenderedBlocks
+    ? (JSON.parse(
+        sessionStorage.getItem(alreadyRenderedInfoKey) as string
+      ) as string[])
+    : [''];
+
+  const [charBlocks, setCharBlocks] = useState<string[]>(alreadyRenderedBlocks);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentParagraphIndex, setCurrentParagraphIndex] = useState(0);
 
@@ -46,10 +55,16 @@ const StdoutText: FunctionComponent<Props> = ({ text }) => {
     setAllowAutoScroll(scrollTop >= prevScrollPosition);
   };
 
+  const saveRenderedBlocks = () => {
+    sessionStorage.setItem(alreadyRenderedInfoKey, JSON.stringify(charBlocks));
+  };
+
   const renderNextLetter = () => {
     if (letterPosition === currentBlock.length) {
       setCurrentParagraphIndex(currentParagraphIndex + 1);
-      if (currentParagraphIndex + 1 >= text.length) {
+      const finishRender = currentParagraphIndex + 1 >= text.length;
+      if (finishRender) {
+        saveRenderedBlocks();
         return;
       }
       setCurrentBlock(text[currentParagraphIndex + 1]);
@@ -69,14 +84,16 @@ const StdoutText: FunctionComponent<Props> = ({ text }) => {
     scrollToBottom();
   };
 
-  useEffect(() => {
-    const timeout =
-      letterPosition === 0 ? typeTimeoutAfterCarriage : typeTimeout;
+  if (!rawRenderedBlocks) {
+    useEffect(() => {
+      const timeout =
+        letterPosition === 0 ? typeTimeoutAfterCarriage : typeTimeout;
 
-    setTimeout(() => {
-      renderNextLetter();
-    }, timeout);
-  }, [letterPosition]);
+      setTimeout(() => {
+        renderNextLetter();
+      }, timeout);
+    }, [letterPosition]);
+  }
 
   return (
     <div ref={containerRef} className='stdout' onScroll={containerScrolled}>

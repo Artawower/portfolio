@@ -1,6 +1,8 @@
 export const ABOUT_ME = [
   `
-Hi, my name is Artur. I've been doing web development for more than 7
+Hi, my name is Artur. I've been doing web development for more than ${
+    new Date().getFullYear() - 2016
+  }
 years. I mostly write in typescript, python and golang. In my spare time
 I do open source contributing and run a small blog - https://du-blog.ru.
 During my practice I've dealt with big enterprise projects as well as

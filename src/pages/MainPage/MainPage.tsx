@@ -109,7 +109,7 @@ const MainPage: FunctionComponent = () => {
                 github='https://github.com/artawower'
                 email='mailto:artawower@protonmail.com'
                 linkedin='https://www.linkedin.com/in/artawower/'
-                download='https://raw.githubusercontent.com/Artawower/portfolio/public/Artur%20Yaroshenko%20CV.pdf'
+                download='https://raw.githubusercontent.com/Artawower/portfolio/gh-pages/Artur%20Yaroshenko%20CV.pdf'
                 telegram='https://telegram.me/artawower'
               />
             </div>
